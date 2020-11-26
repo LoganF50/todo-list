@@ -1,7 +1,5 @@
 # Todo List
 
-Todo List created with html, css, and js
-
 [From the Odin Project]
 
 ## Completed Features
@@ -9,8 +7,11 @@ Todo List created with html, css, and js
 - completed feature
     - use 4 spaces to nest lists
 
-## Learning Outcomes
+## Built Using (* indicates new usage)
 
-- basic npm usage
-- basic webpack usage
-- use of es6 modules
+- html
+- css
+- js
+- *npm
+- *webpack
+- *es6 modules
