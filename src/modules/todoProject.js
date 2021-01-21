@@ -1,58 +1,72 @@
-import { TodoItem } from './todoItem.js'
+import { TodoSorter } from './todoSorter.js'
 
-export class TodoProject {
-  constructor(title, todoList) {
-    this._title = title;
-    this._todoList = todoList;
-  }
+const TodoProject = (id, title, todoList) => {
+  //private variables
+  let _id = id;
+  let _title = title;
+  let _todoList = todoList;
 
-  //GETTERS
-  get title() {
-    return this._title;
-  }
+  //getters
+  const getId = () => _id;
+  const getTitle = () => _title;
+  const getTodoList = () => _todoList;
 
-  get todoList() {
-    return this._todoList;
-  }
+  //setters
+  const setId = (newId) => {
+    _id = newId;
+  };
+  const setTitle = (newTitle) => {
+    _title = newTitle;
+  };
+  const setTodoList = (newTodoList) => {
+    _todoList = newTodoList;
+  };
 
-  //SETTERS
-  set title(title) {
-    this._title = title;
-  }
+  //sorters
+  const sortTodoItemsByDate = () => {
+    const sorter = TodoSorter();
+    _todoList.sort(sorter.compareDate());
+  };
 
-  //STATIC
-  static sortBy = Object.freeze({dueDate: 1, priority: 2, title: 3});
+  const sortTodoItemsByPriority = () => {
+    const sorter = TodoSorter();
+    _todoList.sort(sorter.comparePriority());
+  };
 
-  //METHODS
-  addTodoItem(todoItem) {
-    this._todoList.push(todoItem);
-  }
+  const sortTodoItemsByTitle = () => {
+    const sorter = TodoSorter();
+    _todoList.sort(sorter.compareTitle());
+  };
 
-  deleteTodoItem(index) {
-    this._todoList.splice(index, 1);
-  }
+  //todoList methods
+  const addTodo = (todo) => {
+    _todoList.push(todo);
+  };
 
-  editTodoItem(index, todoItem) {
-    this._todoList[index] = todoItem;
-  }
+  const deleteTodo = (id) => {
+    const index = _todoList.findIndex((todoItem) => todoItem.id == todo.id);
+    _todoList.splice(index, 1);
+  };
 
-  //uses static sortBy enum as parameter
-  sortTodoItems(sortBy) {
-    switch (sortBy) {
-      case TodoProject.sortBy.dueDate:
-        this._todoList.sort(TodoItem.compareDate);
-        break;
+  const updateTodo = (todo) => {
+    const index = _todoList.findIndex((todoItem) => todoItem.id == todo.id);
+    _todoList.splice(index, 1, todo);
+  };
 
-      case TodoProject.sortBy.priority:
-        this._todoList.sort(TodoItem.comparePriority);
-        break;
+  return {
+    getId,
+    getTitle,
+    getTodoList,
+    setId,
+    setTitle,
+    setTodoList,
+    sortTodoItemsByDate,
+    sortTodoItemsByPriority,
+    sortTodoItemsByTitle,
+    addTodo,
+    deleteTodo,
+    updateTodo
+  };
+};
 
-      case TodoProject.sortBy.title:
-        this._todoList.sort(TodoItem.compareTitle);
-        break;
-    
-      default:
-        break;
-    }
-  }
-}
+export {TodoProject};
