@@ -15,7 +15,7 @@ const TodoItem = (id, title, details, dueDate, priority) => {
 
   //setters
   const setId = (newId) => {
-    _id = id;
+    _id = newId;
   };
   const setTitle = (newTitle) => {
     _title = newTitle;

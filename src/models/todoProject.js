@@ -44,7 +44,7 @@ const TodoProject = (id, title, todoList) => {
   };
 
   const deleteTodo = (id) => {
-    const index = _todoList.findIndex((todoItem) => todoItem.id == todo.id);
+    const index = _todoList.findIndex((todoItem) => todoItem.id == id);
     _todoList.splice(index, 1);
   };
 
