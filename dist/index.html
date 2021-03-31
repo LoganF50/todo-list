@@ -8,7 +8,22 @@
   <title>ToDo List</title>
 </head>
 <body>
-  <div id="root"></div>
+  <div style="display: none;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id='add-sharp'><path stroke-linecap="square" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id='close-sharp'><path d="M400 145.49L366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id='ellipsis-horizontal-sharp'><circle cx="256" cy="256" r="48"/><circle cx="416" cy="256" r="48"/><circle cx="96" cy="256" r="48"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id='menu-sharp'><path d="M64 384h384v-42.67H64zm0-106.67h384v-42.66H64zM64 128v42.67h384V128z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id='settings-sharp'><path d="M256 176a80 80 0 1080 80 80.24 80.24 0 00-80-80zm172.72 80a165.53 165.53 0 01-1.64 22.34l48.69 38.12a11.59 11.59 0 012.63 14.78l-46.06 79.52a11.64 11.64 0 01-14.14 4.93l-57.25-23a176.56 176.56 0 01-38.82 22.67l-8.56 60.78a11.93 11.93 0 01-11.51 9.86h-92.12a12 12 0 01-11.51-9.53l-8.56-60.78A169.3 169.3 0 01151.05 393L93.8 416a11.64 11.64 0 01-14.14-4.92L33.6 331.57a11.59 11.59 0 012.63-14.78l48.69-38.12A174.58 174.58 0 0183.28 256a165.53 165.53 0 011.64-22.34l-48.69-38.12a11.59 11.59 0 01-2.63-14.78l46.06-79.52a11.64 11.64 0 0114.14-4.93l57.25 23a176.56 176.56 0 0138.82-22.67l8.56-60.78A11.93 11.93 0 01209.94 26h92.12a12 12 0 0111.51 9.53l8.56 60.78A169.3 169.3 0 01361 119l57.2-23a11.64 11.64 0 0114.14 4.92l46.06 79.52a11.59 11.59 0 01-2.63 14.78l-48.69 38.12a174.58 174.58 0 011.64 22.66z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id='swap-vertical-sharp'><title>Swap Vertical</title><path fill="none" stroke-linecap="square" stroke-miterlimit="10" stroke-width="32" d="M464 208L352 96 240 208M352 113.13V416M48 304l112 112 112-112M160 398V96"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id='trash-sharp'><title>Trash</title><path d="M296 64h-80a7.91 7.91 0 00-8 8v24h96V72a7.91 7.91 0 00-8-8z" fill="none"/><path d="M292 64h-72a4 4 0 00-4 4v28h80V68a4 4 0 00-4-4z" fill="none"/><path d="M447.55 96H336V48a16 16 0 00-16-16H192a16 16 0 00-16 16v48H64.45L64 136h33l20.09 314A32 32 0 00149 480h214a32 32 0 0031.93-29.95L415 136h33zM176 416l-9-256h33l9 256zm96 0h-32V160h32zm24-320h-80V68a4 4 0 014-4h72a4 4 0 014 4zm40 320h-33l9-256h33z"/></svg>
+  </div>
+  <div class="root" id="root">
+    <header class="header" id="header"></header>
+    <div class="wrapper">
+      <aside class="sidebar" id="sidebar"></aside>
+      <div class="main" id="main"></div>
+    </div>
+  </div>
   <script src="./main.js"></script>
 </body>
 </html>
