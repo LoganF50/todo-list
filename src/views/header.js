@@ -19,6 +19,14 @@ const Header = (container) => {
     return iconContainer;
   };
 
+  const disableAddIcon = () => {
+    _addIcon.classList.add('header__icon--disabled');
+  };
+
+  const enableAddIcon = () => {
+    _addIcon.classList.remove('header__icon--disabled');
+  };
+
   const getAddIcon = () => _addIcon;
   const getMenuIcon = () => _menuIcon;
 
@@ -30,6 +38,8 @@ const Header = (container) => {
   }
 
   return {
+    disableAddIcon,
+    enableAddIcon,
     getAddIcon,
     getMenuIcon,
     loadHeader

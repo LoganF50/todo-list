@@ -37,6 +37,10 @@ body {
   cursor: pointer;
 }
 
+.header__icon--disabled {
+  display: none;
+}
+
 .main {
   display: flex;
   flex-direction: column;
@@ -47,7 +51,7 @@ body {
 .main__header {
   display: flex;
   justify-content: space-between;
-  padding: 30px;
+  padding: 40px;
 }
 
 .main__icon {
@@ -74,7 +78,105 @@ body {
 .main__todos {
   display: flex;
   flex-direction: column;
-  padding: 30px;
+  padding: 40px;
+  max-width: 500px;
+  overflow: auto;
+}
+
+.modal__button {
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--c-main-light);
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.modal__button--primary {
+  background-color: var(--c-orange);
+}
+
+.modal__button--secondary {
+  background-color: var(--c-main-dark);
+}
+
+.modal__container {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--c-main-dark);
+  padding: 25px;
+  border-radius: 5px;
+  max-width: 500px;
+}
+
+.modal__input {
+  background-color: var(--c-main-light);
+  color: var(--c-main-dark);
+  font-size: 1.5rem;
+  margin: 5px 0 20px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.modal__input--date {
+  display: block;
+}
+
+.modal__input--text {
+  width: 100%;
+}
+
+.modal__input--text_long {
+  width: 100%;
+  resize: none;
+}
+
+.modal__label {
+  font-size: 1.3rem;
+}
+
+.modal__overlay {
+  /* show above all except modal content */
+  z-index: 1000;
+
+  /* positioning & sizing */
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  /* coloring */
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal__row {
+
+}
+
+.modal__separator {
+  width: 100%;
+  border-top: 3px solid var(--c-orange);
+  padding: 0 0 25px;
+}
+
+.modal__text {
+  font-size: 1.2rem;
+  margin: 0 0 20px;
+}
+
+.modal__title {
+  font-size: 3.0rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.modal--hidden {
+  display: none;
 }
 
 .root {
@@ -123,6 +225,10 @@ body {
   padding: 10px;
 }
 
+.sidebar__project--active {
+  background-color: var(--c-orange);
+}
+
 .sidebar__project:hover {
   background-color: var(--c-orange);
   cursor: pointer;
@@ -144,7 +250,6 @@ body {
   border: 1px solid var(--c-orange);
   border-radius: 5px;
   margin: 10px 0;
-  max-width: 800px;
   box-shadow: 8px 8px hsl(0, 0%, 12%);
 }
 
@@ -154,7 +259,7 @@ body {
 }
 
 .todo__dueDate {
-  font-size: 1.2rem;
+  font-size: 1.0rem;
 }
 
 .todo__icon {
@@ -184,7 +289,7 @@ body {
 }
 
 .todo__title {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   margin: 0 0 10px 0;
 }
 

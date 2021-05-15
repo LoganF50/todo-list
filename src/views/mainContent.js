@@ -1,7 +1,9 @@
+import { format } from 'date-fns'
 import {getSVGElement} from './../utilities.js';
 
 const MainContent = (container) => {
   //private variables
+  let _deleteIcon = getSVGElement('trash-sharp');
   let _optionsIcon = getSVGElement('ellipsis-horizontal-sharp');
   let _sortIcon = getSVGElement('swap-vertical-sharp');
   let _title = document.createElement('span');
@@ -13,8 +15,16 @@ const MainContent = (container) => {
     }
   };
 
+  const _disableDeleteIcon = () => {
+    _deleteIcon.classList.add('main__icon--disabled');
+  };
+
   const _disableOptionsIcon = () => {
     _optionsIcon.classList.add('main__icon--disabled');
+  };
+
+  const _enableDeleteIcon = () => {
+    _deleteIcon.classList.remove('main__icon--disabled');
   };
 
   const _enableOptionsIcon = () => {
@@ -33,19 +43,21 @@ const MainContent = (container) => {
     todoDueDate.classList.add('todo__dueDate');
     let todoIcons = document.createElement('div');
     todoIcons.classList.add('todo__iconsContainer');
-    let todoOptionsIcon = getSVGElement('ellipsis-horizontal-sharp');
-    todoOptionsIcon.classList.add('todo__icon', 'todo__optionsIcon');
+    let todoDeleteIcon = getSVGElement('trash-sharp');
+    todoDeleteIcon.classList.add('todo__icon', 'todo__deleteIcon');
 
     //fill data
     todoNode.dataset.id = id;
-    todoNode.dataset.project_id = projectID;
+    todoNode.dataset.projectId = projectID;
+    todoDeleteIcon.dataset.id = id;
+    todoDeleteIcon.dataset.projectId = projectID;
     todoTitle.textContent = title;
-    todoDueDate.textContent = dueDate;
+    todoDueDate.textContent = format(dueDate, 'MM-dd-yyyy');
 
     //add to containers
     todoInfo.appendChild(todoTitle);
     todoInfo.appendChild(todoDueDate);
-    todoIcons.appendChild(todoOptionsIcon);
+    todoIcons.appendChild(todoDeleteIcon);
     todoNode.appendChild(todoInfo);
     todoNode.appendChild(todoIcons);
     return todoNode;
@@ -62,6 +74,8 @@ const MainContent = (container) => {
     iconContainer.appendChild(_sortIcon);
     _optionsIcon.classList.add('main__icon');
     iconContainer.appendChild(_optionsIcon);
+    _deleteIcon.classList.add('main__icon');
+    iconContainer.appendChild(_deleteIcon);
     headerContainer.appendChild(_title);
     headerContainer.appendChild(iconContainer);
     return headerContainer;
@@ -85,8 +99,15 @@ const MainContent = (container) => {
     });
   };
 
+  const getDeleteIcon = () => _deleteIcon;
   const getOptionsIcon = () => _optionsIcon;
   const getSortIcon = () => _sortIcon;
+  const getTodoDeletes = () => {
+    return document.getElementsByClassName('todo__deleteIcon');
+  };
+  const getTodos = () => {
+    return _todosContainer.childNodes;
+  }
 
   //used for initial loading of page
   const loadMainContent = () => {
@@ -99,15 +120,20 @@ const MainContent = (container) => {
     _updateHeader(project.getTitle());
     _updateTodoList(project.getTodoList());
     if(isEditable) {
+      _enableDeleteIcon();
       _enableOptionsIcon();
     } else {
+      _disableDeleteIcon();
       _disableOptionsIcon();
     }
   }
 
   return {
+    getDeleteIcon,
     getOptionsIcon,
     getSortIcon,
+    getTodoDeletes,
+    getTodos,
     loadMainContent,
     updateCurrentProject
   };

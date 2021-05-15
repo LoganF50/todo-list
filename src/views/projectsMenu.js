@@ -81,6 +81,15 @@ const ProjectsMenu = (container) => {
   const getDefaultProject = () => _defaultProject;
   const getTodayProject = () => _todayProject;
   const getUpcomingProject = () => _upcomingProject;
+  const getUserProjectNodeById = (id) => {
+    let returnNode = null;
+    getUserProjects().forEach(projNode => {
+      if(projNode.dataset.id == id) {
+        returnNode = projNode;
+      }
+    });
+    return returnNode;
+  };
   const getUserProjects = () => {
     return _userProjectsContainer.childNodes;
   };
@@ -91,9 +100,19 @@ const ProjectsMenu = (container) => {
     container.appendChild(_loadUserProjects());
   };
 
+  const setActiveProject = (projectNode) => {
+    _todayProject.classList.remove('sidebar__project--active');
+    _upcomingProject.classList.remove('sidebar__project--active');
+    _defaultProject.classList.remove('sidebar__project--active');
+    getUserProjects().forEach(proj => {
+      proj.classList.remove('sidebar__project--active');
+    });
+    projectNode.classList.add('sidebar__project--active');
+  };
+
   const toggleMenuVisibility = () => {
     container.classList.toggle('sidebar--closed');
-  }
+  };
 
   //updates todo counts for each static project
   const updateStaticCounts = (todayCount, upcomingCount, defaultCount) => {
@@ -115,8 +134,10 @@ const ProjectsMenu = (container) => {
     getDefaultProject,
     getTodayProject,
     getUpcomingProject,
+    getUserProjectNodeById,
     getUserProjects,
     loadProjectsMenu,
+    setActiveProject,
     toggleMenuVisibility,
     updateStaticCounts,
     updateUserProjects

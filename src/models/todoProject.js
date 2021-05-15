@@ -1,4 +1,4 @@
-import { TodoSorter } from './todoSorter.js'
+import { add, compareAsc, isBefore } from 'date-fns'
 
 const TodoProject = (id, title, todoList) => {
   //private variables
@@ -9,7 +9,32 @@ const TodoProject = (id, title, todoList) => {
   //getters
   const getId = () => _id;
   const getTitle = () => _title;
+  const getTodoById = (id) => {
+    const index = _todoList.findIndex((todoItem) => todoItem.getId() == id);
+    return _todoList[index];
+  };
   const getTodoList = () => _todoList;
+  //return arraylist of todos due today or earlier
+  const getTodosToday = () => {
+    const todos = [];
+    _todoList.forEach(todo => {
+      if(compareAsc(todo.getDueDate(), new Date()) <= 0) {
+        todos.push(todo);
+      }
+    });
+    return todos;
+  };
+  //return arraylist of todos due within 7 days or earlier
+  const getTodosUpcoming = () => {
+    const todos = [];
+    //loop todos, grabbing if due within 7 days/earlier
+    _todoList.forEach(todo => {
+      if(isBefore(todo.getDueDate(), add(new Date(), {weeks: 1}))) {
+        todos.push(todo);
+      }
+    });
+    return todos;
+  };
 
   //setters
   const setId = (newId) => {
@@ -22,47 +47,31 @@ const TodoProject = (id, title, todoList) => {
     _todoList = newTodoList;
   };
 
-  //sorters
-  const sortTodoItemsByDate = () => {
-    const sorter = TodoSorter();
-    _todoList.sort(sorter.compareDate());
-  };
-
-  const sortTodoItemsByPriority = () => {
-    const sorter = TodoSorter();
-    _todoList.sort(sorter.comparePriority());
-  };
-
-  const sortTodoItemsByTitle = () => {
-    const sorter = TodoSorter();
-    _todoList.sort(sorter.compareTitle());
-  };
-
   //todoList methods
   const addTodo = (todo) => {
     _todoList.push(todo);
   };
 
   const deleteTodo = (id) => {
-    const index = _todoList.findIndex((todoItem) => todoItem.id == id);
+    const index = _todoList.findIndex((todoItem) => todoItem.getId() == id);
     _todoList.splice(index, 1);
   };
 
   const updateTodo = (todo) => {
-    const index = _todoList.findIndex((todoItem) => todoItem.id == todo.id);
+    const index = _todoList.findIndex((todoItem) => todoItem.getId() == todo.id);
     _todoList.splice(index, 1, todo);
   };
 
   return {
     getId,
     getTitle,
+    getTodoById,
     getTodoList,
+    getTodosToday,
+    getTodosUpcoming,
     setId,
     setTitle,
     setTodoList,
-    sortTodoItemsByDate,
-    sortTodoItemsByPriority,
-    sortTodoItemsByTitle,
     addTodo,
     deleteTodo,
     updateTodo
