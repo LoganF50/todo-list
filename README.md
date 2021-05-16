@@ -4,6 +4,7 @@
 
 ## Completed Features
 
+- save projects/todos between sessions using localStorage
 - sortable todos by:
     - alphabetical
     - reverse alphabetical
