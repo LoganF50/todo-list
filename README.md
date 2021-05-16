@@ -27,6 +27,8 @@
 - move todos to another project
 - context menu for projects/todos
 - keyboard shortcuts (add todo, add project, etc)
+- activity log
+- undo button
 
 ## Fixes
 
@@ -35,6 +37,7 @@
 - selectable sort options (rather than looping in static order)
 - responsive design
 - form traversal (tab for next item, start in first input, esc to close, etc)
+- allow no due date
 
 ## Built Using (* indicates new usage)
 
