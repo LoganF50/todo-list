@@ -156,10 +156,10 @@ const App = () => {
 
   const _handleProjectAdd = () => {
     const inputTitle = _modal.getProjectTitle().value;
-    _validator.validateTodoProject(inputTitle);
+    const validation = _validator.validateTodoProject(inputTitle);
 
     //add valid project
-    if(_validator.isValid) {
+    if(validation.isValid) {
       const newProjectId = _getNewProjectId();
       _projects.push(TodoProject(newProjectId, inputTitle, []));
       _updateDataOnViewChange(false, false, false, newProjectId, null, null);
@@ -168,7 +168,7 @@ const App = () => {
       _handleModalHide();
       _updateStorage();
     } else {
-      alert(_validator.errorMsg);
+      alert(validation.errorMsg);
     }
   };
 
@@ -187,10 +187,10 @@ const App = () => {
 
   const _handleProjectEdit = () => {
     const inputTitle = _modal.getProjectTitle().value;
-    _validator.validateTodoProject(inputTitle);
+    const validation = _validator.validateTodoProject(inputTitle);
 
     //update valid project
-    if(_validator.isValid) {
+    if(validation.isValid) {
       //update project
       const proj = _getProjectById(_currentProjectId);
       proj.setTitle(inputTitle);
@@ -201,7 +201,7 @@ const App = () => {
       _handleModalHide();
       _updateStorage();
     } else {
-      alert(_validator.errorMsg);
+      alert(validation.errorMsg);
     };
   };
 
@@ -209,10 +209,10 @@ const App = () => {
     const inputDetails = _modal.getTodoDetails().value;
     const inputDueDate = _modal.getTodoDueDate().value;
     const inputTitle = _modal.getTodoTitle().value;
-    _validator.validateTodoItem(inputTitle, inputDetails, inputDueDate);
+    const validation = _validator.validateTodoItem(inputTitle, inputDetails, inputDueDate);
 
     //add valid todo
-    if(_validator.isValid) {
+    if(validation.isValid) {
       //add todo to current project
       const newTodo = TodoItem(_getNewTodoId(_currentProjectId),_currentProjectId, inputTitle, inputDetails, new Date(inputDueDate + 'T00:00:00'));
       if(_isDefaultView) {
@@ -229,7 +229,7 @@ const App = () => {
       _handleModalHide();
       _updateStorage();
     } else {
-      alert(_validator.errorMsg);
+      alert(validation.errorMsg);
     };
   };
 
@@ -253,10 +253,10 @@ const App = () => {
     const inputDetails = _modal.getTodoDetails().value;
     const inputDueDate = _modal.getTodoDueDate().value;
     const inputTitle = _modal.getTodoTitle().value;
-    _validator.validateTodoItem(inputTitle, inputDetails, inputDueDate);
+    const validation = _validator.validateTodoItem(inputTitle, inputDetails, inputDueDate);
 
     //edit valid todo
-    if(_validator.isValid) {
+    if(validation.isValid) {
       //create todo
       const updatedTodo = TodoItem(_currentTodoId,_currentTodoProjectId, inputTitle, inputDetails, new Date(inputDueDate + 'T00:00:00'));
       if(_isDefaultView) {
@@ -273,7 +273,7 @@ const App = () => {
       _handleModalHide();
       _updateStorage();
     } else {
-      alert(_validator.errorMsg);
+      alert(validation.errorMsg);
     }
   };
 
