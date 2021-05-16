@@ -12,21 +12,27 @@
 - view todos due today (or earlier)
 - view todos due this week (or earlier)
 
-## Fixes/Features to Implement
+## Features to Implement
 
 - user options
     - date appearance
     - theme
     - etc
-- selectable sort options (rather than looping in static order)
+- tooltips over icons
 - add priorities to todos
     - todos should have some indication of their priority in the main view
     - sortable by priority (and reverse)
 - add checklist to todos
 - use words for due dates in simple view (Today, Tomorrow, Yesterday, etc)
-- tooltips over icons
 - move todos to another project
 - context menu for projects/todos
+
+## Fixes
+
+- wrap todos or scroll todos only
+    - currently extends whole page instead of just todos
+- selectable sort options (rather than looping in static order)
+- responsive design
 
 ## Built Using (* indicates new usage)
 
