@@ -72,8 +72,6 @@ const App = () => {
         //update data
         _updateDataOnViewChange(_isDefaultView, _isTodayView, _isUpcomingView, _currentProjectId, todoId, todoProjectId);
 
-        console.log({_currentTodoId, _currentTodoProjectId});
-
         //show edit todo
         _showModalTodoEdit();
       });

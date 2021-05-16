@@ -59,9 +59,7 @@ const TodoProject = (id, title, todoList) => {
 
   const updateTodo = (todo) => {
     const index = _todoList.findIndex((todoItem) => todoItem.getId() == todo.getId());
-    console.log({_todoList, index});
     _todoList.splice(index, 1, todo);
-    console.log({_todoList});
   };
 
   return {
