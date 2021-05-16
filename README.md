@@ -26,6 +26,7 @@
 - use words for due dates in simple view (Today, Tomorrow, Yesterday, etc)
 - move todos to another project
 - context menu for projects/todos
+- keyboard shortcuts (add todo, add project, etc)
 
 ## Fixes
 
@@ -33,6 +34,7 @@
     - currently extends whole page instead of just todos
 - selectable sort options (rather than looping in static order)
 - responsive design
+- form traversal (tab for next item, start in first input, esc to close, etc)
 
 ## Built Using (* indicates new usage)
 
