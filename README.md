@@ -24,6 +24,9 @@
     - sortable by priority (and reverse)
 - add checklist to todos
 - use words for due dates in simple view (Today, Tomorrow, Yesterday, etc)
+- tooltips over icons
+- move todos to another project
+- context menu for projects/todos
 
 ## Built Using (* indicates new usage)
 
