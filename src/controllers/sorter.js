@@ -1,28 +1,30 @@
-import {compareAsc} from 'date-fns'
+import { compareAsc } from "date-fns";
 
 const Sorter = () => {
   const sortTodosByDate = (todos, isOldestFirst) => {
-    todos.sort((a,b) => compareAsc(a.getDueDate(), b.getDueDate()));
+    todos.sort((a, b) => compareAsc(a.getDueDate(), b.getDueDate()));
 
     //reverse so newest items are first
-    if(!isOldestFirst) {
+    if (!isOldestFirst) {
       todos.reverse();
-    };
+    }
   };
 
   const sortTodoItemsByTitle = (todos, isAlphabetical) => {
-    todos.sort((a, b) => a.getTitle().toUpperCase().localeCompare(b.getTitle()));
+    todos.sort((a, b) =>
+      a.getTitle().toUpperCase().localeCompare(b.getTitle())
+    );
 
     //reverse so non-alphabetical
-    if(!isAlphabetical) {
+    if (!isAlphabetical) {
       todos.reverse();
     }
   };
 
   return {
     sortTodosByDate,
-    sortTodoItemsByTitle
+    sortTodoItemsByTitle,
   };
 };
 
-export {Sorter};
+export { Sorter };

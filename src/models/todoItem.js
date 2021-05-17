@@ -44,4 +44,4 @@ const TodoItem = (id, projectID, title, details, dueDate) => {
   };
 };
 
-export {TodoItem};
+export { TodoItem };

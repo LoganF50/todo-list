@@ -1,32 +1,32 @@
-import {getSVGElement} from './../utilities.js';
+import { getSVGElement } from "./../utilities.js";
 
 const ProjectsMenu = (container) => {
-  let _todayProject = document.createElement('div');
-  let _todayCount = document.createElement('div');
-  let _upcomingProject = document.createElement('div');
-  let _upcomingCount = document.createElement('div');
-  let _defaultProject = document.createElement('div');
-  let _defaultCount = document.createElement('div');
-  let _addProjectIcon = getSVGElement('add-sharp');
-  let _userProjectsContainer = document.createElement('div');
+  let _todayProject = document.createElement("div");
+  let _todayCount = document.createElement("div");
+  let _upcomingProject = document.createElement("div");
+  let _upcomingCount = document.createElement("div");
+  let _defaultProject = document.createElement("div");
+  let _defaultCount = document.createElement("div");
+  let _addProjectIcon = getSVGElement("add-sharp");
+  let _userProjectsContainer = document.createElement("div");
 
   const _clearUserProjects = () => {
-    while(_userProjectsContainer.firstChild) {
+    while (_userProjectsContainer.firstChild) {
       _userProjectsContainer.removeChild(_userProjectsContainer.firstChild);
     }
   };
 
   const _getUserProjectNode = (id, title, count) => {
-    let projectElement = document.createElement('div');
-    projectElement.classList.add('sidebar__project', 'sidebar__project--user');
+    let projectElement = document.createElement("div");
+    projectElement.classList.add("sidebar__project", "sidebar__project--user");
     projectElement.dataset.id = id;
 
-    let titleElement = document.createElement('div');
-    let countElement = document.createElement('div');
+    let titleElement = document.createElement("div");
+    let countElement = document.createElement("div");
     titleElement.textContent = title;
-    titleElement.classList.add('sidebar__title');
+    titleElement.classList.add("sidebar__title");
     countElement.textContent = count;
-    countElement.classList.add('sidebar__count');
+    countElement.classList.add("sidebar__count");
 
     projectElement.appendChild(titleElement);
     projectElement.appendChild(countElement);
@@ -35,12 +35,15 @@ const ProjectsMenu = (container) => {
   };
 
   const _getStaticProjectNode = (projectElement, countElement, title) => {
-    projectElement.classList.add('sidebar__project', 'sidebar__project--static');
-    let titleElement = document.createElement('div');
+    projectElement.classList.add(
+      "sidebar__project",
+      "sidebar__project--static"
+    );
+    let titleElement = document.createElement("div");
     titleElement.textContent = title;
-    titleElement.classList.add('sidebar__title');
+    titleElement.classList.add("sidebar__title");
     countElement.textContent = 0;
-    countElement.classList.add('sidebar__count');
+    countElement.classList.add("sidebar__count");
 
     projectElement.appendChild(titleElement);
     projectElement.appendChild(countElement);
@@ -48,16 +51,16 @@ const ProjectsMenu = (container) => {
   };
 
   const _loadUserProjects = () => {
-    let userContainer = document.createElement('div');
-    let userHeaderContainer = document.createElement('div');
-    userHeaderContainer.classList.add('sidebar__header');
-    let headerTitle = document.createElement('div');
-    headerTitle.textContent = 'User Projects';
-    _addProjectIcon.classList.add('sidebar__icon');
+    let userContainer = document.createElement("div");
+    let userHeaderContainer = document.createElement("div");
+    userHeaderContainer.classList.add("sidebar__header");
+    let headerTitle = document.createElement("div");
+    headerTitle.textContent = "User Projects";
+    _addProjectIcon.classList.add("sidebar__icon");
     userHeaderContainer.appendChild(headerTitle);
     userHeaderContainer.appendChild(_addProjectIcon);
 
-    _userProjectsContainer.classList.add('sidebar__projectContainer');
+    _userProjectsContainer.classList.add("sidebar__projectContainer");
     userContainer.appendChild(userHeaderContainer);
     userContainer.appendChild(_userProjectsContainer);
 
@@ -65,11 +68,19 @@ const ProjectsMenu = (container) => {
   };
 
   const _loadStaticProjects = () => {
-    let staticContainer = document.createElement('div');
-    staticContainer.classList.add('sidebar__projectContainer');
-    let TodayNode = _getStaticProjectNode(_todayProject, _todayCount, 'Today');
-    let UpcomingNode = _getStaticProjectNode(_upcomingProject, _upcomingCount, 'Upcoming');
-    let defaultNode = _getStaticProjectNode(_defaultProject, _defaultCount, 'Default');
+    let staticContainer = document.createElement("div");
+    staticContainer.classList.add("sidebar__projectContainer");
+    let TodayNode = _getStaticProjectNode(_todayProject, _todayCount, "Today");
+    let UpcomingNode = _getStaticProjectNode(
+      _upcomingProject,
+      _upcomingCount,
+      "Upcoming"
+    );
+    let defaultNode = _getStaticProjectNode(
+      _defaultProject,
+      _defaultCount,
+      "Default"
+    );
     staticContainer.appendChild(TodayNode);
     staticContainer.appendChild(UpcomingNode);
     staticContainer.appendChild(defaultNode);
@@ -83,8 +94,8 @@ const ProjectsMenu = (container) => {
   const getUpcomingProject = () => _upcomingProject;
   const getUserProjectNodeById = (id) => {
     let returnNode = null;
-    getUserProjects().forEach(projNode => {
-      if(projNode.dataset.id == id) {
+    getUserProjects().forEach((projNode) => {
+      if (projNode.dataset.id == id) {
         returnNode = projNode;
       }
     });
@@ -101,17 +112,17 @@ const ProjectsMenu = (container) => {
   };
 
   const setActiveProject = (projectNode) => {
-    _todayProject.classList.remove('sidebar__project--active');
-    _upcomingProject.classList.remove('sidebar__project--active');
-    _defaultProject.classList.remove('sidebar__project--active');
-    getUserProjects().forEach(proj => {
-      proj.classList.remove('sidebar__project--active');
+    _todayProject.classList.remove("sidebar__project--active");
+    _upcomingProject.classList.remove("sidebar__project--active");
+    _defaultProject.classList.remove("sidebar__project--active");
+    getUserProjects().forEach((proj) => {
+      proj.classList.remove("sidebar__project--active");
     });
-    projectNode.classList.add('sidebar__project--active');
+    projectNode.classList.add("sidebar__project--active");
   };
 
   const toggleMenuVisibility = () => {
-    container.classList.toggle('sidebar--closed');
+    container.classList.toggle("sidebar--closed");
   };
 
   //updates todo counts for each static project
@@ -123,8 +134,12 @@ const ProjectsMenu = (container) => {
 
   const updateUserProjects = (projects) => {
     _clearUserProjects();
-    projects.forEach(project => {
-      let projectNode = _getUserProjectNode(project.getId(), project.getTitle(), project.getTodoList().length);
+    projects.forEach((project) => {
+      let projectNode = _getUserProjectNode(
+        project.getId(),
+        project.getTitle(),
+        project.getTodoList().length
+      );
       _userProjectsContainer.appendChild(projectNode);
     });
   };
@@ -140,8 +155,8 @@ const ProjectsMenu = (container) => {
     setActiveProject,
     toggleMenuVisibility,
     updateStaticCounts,
-    updateUserProjects
+    updateUserProjects,
   };
 };
 
-export {ProjectsMenu};
+export { ProjectsMenu };

@@ -1,4 +1,4 @@
-import { add, compareAsc, isBefore } from 'date-fns'
+import { add, compareAsc, isBefore } from "date-fns";
 
 const TodoProject = (id, title, todoList) => {
   //private variables
@@ -17,8 +17,8 @@ const TodoProject = (id, title, todoList) => {
   //return arraylist of todos due today or earlier
   const getTodosToday = () => {
     const todos = [];
-    _todoList.forEach(todo => {
-      if(compareAsc(todo.getDueDate(), new Date()) <= 0) {
+    _todoList.forEach((todo) => {
+      if (compareAsc(todo.getDueDate(), new Date()) <= 0) {
         todos.push(todo);
       }
     });
@@ -28,8 +28,8 @@ const TodoProject = (id, title, todoList) => {
   const getTodosUpcoming = () => {
     const todos = [];
     //loop todos, grabbing if due within 7 days/earlier
-    _todoList.forEach(todo => {
-      if(isBefore(todo.getDueDate(), add(new Date(), {weeks: 1}))) {
+    _todoList.forEach((todo) => {
+      if (isBefore(todo.getDueDate(), add(new Date(), { weeks: 1 }))) {
         todos.push(todo);
       }
     });
@@ -58,7 +58,9 @@ const TodoProject = (id, title, todoList) => {
   };
 
   const updateTodo = (todo) => {
-    const index = _todoList.findIndex((todoItem) => todoItem.getId() == todo.getId());
+    const index = _todoList.findIndex(
+      (todoItem) => todoItem.getId() == todo.getId()
+    );
     _todoList.splice(index, 1, todo);
   };
 
@@ -74,8 +76,8 @@ const TodoProject = (id, title, todoList) => {
     setTodoList,
     addTodo,
     deleteTodo,
-    updateTodo
+    updateTodo,
   };
 };
 
-export {TodoProject};
+export { TodoProject };

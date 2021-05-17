@@ -1,35 +1,35 @@
 const Validator = () => {
   const validateTodoItem = (title, details, dueDate) => {
     let isValid = true;
-    let errorMsg = '';
+    let errorMsg = "";
 
-    if(title.length === 0) {
+    if (title.length === 0) {
       isValid = false;
-      errorMsg = 'Todo title cannot be blank';
-    } else if(dueDate == '') {
+      errorMsg = "Todo title cannot be blank";
+    } else if (dueDate == "") {
       isValid = false;
-      errorMsg = 'Todo due date cannot be blank';
+      errorMsg = "Todo due date cannot be blank";
     }
 
-    return {isValid: isValid, errorMsg: errorMsg};
+    return { isValid: isValid, errorMsg: errorMsg };
   };
 
   const validateTodoProject = (title) => {
     let isValid = true;
-    let errorMsg = '';
+    let errorMsg = "";
 
-    if(title.length === 0) {
+    if (title.length === 0) {
       isValid = false;
-      errorMsg = 'Project title cannot be blank';
+      errorMsg = "Project title cannot be blank";
     }
 
-    return {isValid: isValid, errorMsg: errorMsg};
+    return { isValid: isValid, errorMsg: errorMsg };
   };
 
   return {
     validateTodoItem,
-    validateTodoProject
-  }
+    validateTodoProject,
+  };
 };
 
-export {Validator};
+export { Validator };
